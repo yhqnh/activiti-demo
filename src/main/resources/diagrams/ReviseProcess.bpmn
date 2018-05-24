@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="reviseProcess" name="申改流程" isExecutable="true">
+    <startEvent id="startevent1" name="Start"></startEvent>
+    <endEvent id="endevent1" name="End"></endEvent>
+    <userTask id="managerAudit" name="经理审核" activiti:assignee="${revise.manager}"></userTask>
+    <userTask id="majordomoAudit" name="总监审核" activiti:assignee="${revise.majordomo}"></userTask>
+    <userTask id="largeareAudit" name="副总审核" isForCompensation="true" activiti:assignee="${revise.largeare}"></userTask>
+    <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="managerAudit"></sequenceFlow>
+    <sequenceFlow id="flow3" sourceRef="majordomoAudit" targetRef="largeareAudit"></sequenceFlow>
+    <sequenceFlow id="flow4" sourceRef="largeareAudit" targetRef="endevent1"></sequenceFlow>
+    <serviceTask id="servicetask1" name="Service Task" activiti:class="activitiDemo.AutomatedDataDelegate"></serviceTask>
+    <sequenceFlow id="flow5" sourceRef="managerAudit" targetRef="servicetask1"></sequenceFlow>
+    <sequenceFlow id="flow6" sourceRef="servicetask1" targetRef="majordomoAudit"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_reviseProcess">
+    <bpmndi:BPMNPlane bpmnElement="reviseProcess" id="BPMNPlane_reviseProcess">
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="50.0" y="190.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="1000.0" y="220.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="managerAudit" id="BPMNShape_managerAudit">
+        <omgdc:Bounds height="55.0" width="105.0" x="180.0" y="190.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="majordomoAudit" id="BPMNShape_majordomoAudit">
+        <omgdc:Bounds height="55.0" width="105.0" x="564.0" y="217.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="largeareAudit" id="BPMNShape_largeareAudit">
+        <omgdc:Bounds height="55.0" width="105.0" x="740.0" y="219.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="servicetask1" id="BPMNShape_servicetask1">
+        <omgdc:Bounds height="55.0" width="105.0" x="390.0" y="210.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="85.0" y="207.0"></omgdi:waypoint>
+        <omgdi:waypoint x="180.0" y="217.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="669.0" y="244.0"></omgdi:waypoint>
+        <omgdi:waypoint x="740.0" y="246.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="845.0" y="246.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1000.0" y="237.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="285.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="390.0" y="237.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="495.0" y="237.0"></omgdi:waypoint>
+        <omgdi:waypoint x="564.0" y="244.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
