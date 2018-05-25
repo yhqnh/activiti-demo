@@ -6,7 +6,7 @@ public class Revise implements Serializable{
 	
 	private String manager;
 	
-	private String largeare;
+	private String largearea;
 	
 	private String majordomo;
 
@@ -18,12 +18,12 @@ public class Revise implements Serializable{
 		this.manager = manager;
 	}
 
-	public String getLargeare() {
-		return largeare;
+	public String getLargearea() {
+		return largearea;
 	}
 
-	public void setLargeare(String largeare) {
-		this.largeare = largeare;
+	public void setLargearea(String largeare) {
+		this.largearea = largeare;
 	}
 
 	public String getMajordomo() {
